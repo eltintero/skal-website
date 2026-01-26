@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1er Comida Reglamentaria | Skål International Isla Mujeres-Puerto Morelos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/Skål International Isla Mujeres-Puerto Morelos_Logo.png" alt="Skål International Isla Mujeres-Puerto Morelos">
+                </a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="comidas.html" class="active">Comidas</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h1>1er Comida Reglamentaria</h1>
+            <p>Toma de Protesta de Nueva Mesa Directiva</p>
+        </section>
+
+        <section class="comida-detail">
+            <div class="container">
+                <div class="comida-header">
+                    <img src="images/comida_enero.png" alt="1er Comida Reglamentaria - Hotel Atelier Costa Mujeres">
+                    <div class="comida-info">
+                        <h2>Detalles del Evento</h2>
+                        <div class="detail-item">
+                            <span class="icon">&#128197;</span>
+                            <span><strong>Fecha:</strong> 30 de Enero, 2026</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="icon">&#128336;</span>
+                            <span><strong>Horario:</strong> 2:00 PM - 6:00 PM</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="icon">&#128205;</span>
+                            <span><strong>Lugar:</strong> Hotel Atelier Costa Mujeres</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="icon">&#127860;</span>
+                            <span><strong>Tipo:</strong> Comida Reglamentaria</span>
+                        </div>
+                        <p style="margin-top: 20px; line-height: 1.8;">
+                            Te invitamos a nuestra primera comida reglamentaria del año, donde realizaremos la toma de protesta de la nueva mesa directiva. Un evento especial para iniciar el 2026 junto a nuestros Skålleagues.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="rsvp-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Confirma tu Asistencia</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="rsvp-form-container">
+                    <h3>Formulario de RSVP</h3>
+                    <form id="rsvp-form">
+                        <input type="hidden" name="evento" value="1er Comida Reglamentaria - Enero 2026">
+
+                        <div class="rsvp-type">
+                            <input type="radio" id="solo" name="tipo_asistencia" value="individual" checked>
+                            <label for="solo">Solo yo</label>
+                            <input type="radio" id="con-invitado" name="tipo_asistencia" value="con_invitado">
+                            <label for="con-invitado">Yo + Invitado</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nombre">Nombre Completo *</label>
+                            <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Correo Electrónico *</label>
+                                <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono">Teléfono *</label>
+                                <input type="tel" id="telefono" name="telefono" required placeholder="+52 998 123 4567">
+                            </div>
+                        </div>
+
+                        <div class="guest-fields" id="guest-fields">
+                            <h4>Datos del Invitado</h4>
+                            <div class="form-group">
+                                <label for="nombre_invitado">Nombre del Invitado *</label>
+                                <input type="text" id="nombre_invitado" name="nombre_invitado" placeholder="Nombre completo del invitado">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email_invitado">Correo del Invitado *</label>
+                                    <input type="email" id="email_invitado" name="email_invitado" placeholder="invitado@email.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="telefono_invitado">Teléfono del Invitado *</label>
+                                    <input type="tel" id="telefono_invitado" name="telefono_invitado" placeholder="+52 998 123 4567">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comentarios">Comentarios o Restricciones Alimentarias</label>
+                            <textarea id="comentarios" name="comentarios" placeholder="¿Alguna restricción alimentaria o comentario?" style="min-height: 80px;"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Confirmar Asistencia</button>
+                    </form>
+                    <p id="form-message" style="text-align: center; margin-top: 20px; display: none;"></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>¿Tienes preguntas?</h2>
+                <p>Contáctanos para más información sobre este evento.</p>
+                <a href="contacto.html" class="btn btn-primary">Contacto</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/Skål International Isla Mujeres-Puerto Morelos_Logo.png" alt="Skål International Isla Mujeres-Puerto Morelos">
+                </div>
+                <div class="footer-links">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="comidas.html">Comidas</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <p>Isla Mujeres y Puerto Morelos, Quintana Roo, México</p>
+                    <p>irmalviso@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Skål International Isla Mujeres-Puerto Morelos. Todos los derechos reservados.</p>
+                <p style="margin-top: 10px; font-size: 0.8rem;">Powered by <a href="https://lowcode.agency/" target="_blank" style="color: var(--accent-gold);">LowCode Agency</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // RSVP Form Logic
+        const tipoAsistencia = document.querySelectorAll('input[name="tipo_asistencia"]');
+        const guestFields = document.getElementById('guest-fields');
+        const guestInputs = guestFields.querySelectorAll('input');
+
+        tipoAsistencia.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'con_invitado') {
+                    guestFields.classList.add('visible');
+                    guestInputs.forEach(input => input.required = true);
+                } else {
+                    guestFields.classList.remove('visible');
+                    guestInputs.forEach(input => {
+                        input.required = false;
+                        input.value = '';
+                    });
+                }
+            });
+        });
+
+        // Form submission to Google Sheets
+        const form = document.getElementById('rsvp-form');
+        const formMessage = document.getElementById('form-message');
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx21wwO4OJJGostbUJhKU43K9c7s-_hhJyRKo1F-ovaIJrP0Krf0fYPBRw8FsuCBXHs/exec';
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Enviando...';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(form);
+
+            // Use GET request with URL params (more reliable with Apps Script)
+            const params = new URLSearchParams(formData).toString();
+
+            fetch(`${SCRIPT_URL}?${params}`, {
+                method: 'GET',
+                mode: 'no-cors'
+            })
+            .then(() => {
+                formMessage.style.display = 'block';
+                formMessage.style.color = '#27ae60';
+                formMessage.textContent = '¡Gracias! Tu asistencia ha sido confirmada. Te enviaremos más detalles pronto.';
+                form.reset();
+                guestFields.classList.remove('visible');
+                guestInputs.forEach(input => input.required = false);
+            })
+            .catch(() => {
+                formMessage.style.display = 'block';
+                formMessage.style.color = '#e74c3c';
+                formMessage.textContent = 'Hubo un error. Por favor intenta de nuevo o contáctanos directamente.';
+            })
+            .finally(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html>
