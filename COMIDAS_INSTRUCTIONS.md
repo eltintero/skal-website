@@ -142,7 +142,7 @@ git commit -m "Add [Month] [Year] comida"
 git push
 ```
 
-Site will auto-update at: https://eltintero.github.io/skal-website/
+Site will auto-update at: https://skalislamujerespuertomorelos.org/
 
 ## Spanish Month Abbreviations
 
