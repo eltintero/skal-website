@@ -8,6 +8,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .article-hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        .image-caption {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: -20px;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        @media (max-width: 768px) {
+            .article-hero-image {
+                height: 250px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="main-header">
@@ -42,6 +65,9 @@
                 <article class="article-content">
                     <p class="article-date">24 de Febrero, 2026</p>
                     <h2>Cancún reporta ocupación hotelera del 83.7% y conectividad récord</h2>
+                    
+                    <img src="images/cancun-hotel-zone-aerial.jpg" alt="Vista aérea de la Zona Hotelera de Cancún con aguas turquesas" class="article-hero-image">
+                    <p class="image-caption">Vista aérea de la Zona Hotelera de Cancún</p>
                     
                     <p>El Caribe Mexicano presenta indicadores positivos en turismo para febrero 2026, consolidando a Cancún como uno de los destinos más atractivos del mundo.</p>
 
