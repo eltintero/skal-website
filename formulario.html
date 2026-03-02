@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votación: Día de Comidas | Skål International Isla Mujeres-Puerto Morelos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/Skål International Isla Mujeres-Puerto Morelos_Logo.png" alt="Skål International Isla Mujeres-Puerto Morelos">
+                </a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="comidas.html">Comidas</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h1>Votación</h1>
+            <p>Elige el mejor viernes para nuestras comidas reglamentarias</p>
+        </section>
+
+        <section class="rsvp-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>¿Qué viernes prefieres?</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="rsvp-form-container">
+                    <p style="margin-bottom: 25px; line-height: 1.8; color: #555;">
+                        Queremos elegir el mejor día para nuestras comidas reglamentarias mensuales. Por favor vota por el viernes que más te convenga.
+                    </p>
+                    <form id="votacion-form">
+                        <input type="hidden" name="formulario" value="votacion">
+
+                        <div class="form-group">
+                            <label for="nombre">Nombre Completo *</label>
+                            <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo">
+                        </div>
+
+                        <div class="rsvp-type">
+                            <input type="radio" id="segundo" name="voto" value="2do Viernes" required>
+                            <label for="segundo">2do Viernes</label>
+                            <input type="radio" id="tercero" name="voto" value="3er Viernes">
+                            <label for="tercero">3er Viernes</label>
+                            <input type="radio" id="igual" name="voto" value="Me da igual">
+                            <label for="igual">Me da igual</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Enviar Voto</button>
+                    </form>
+                    <p id="form-message" style="text-align: center; margin-top: 20px; display: none;"></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/Skål International Isla Mujeres-Puerto Morelos_Logo.png" alt="Skål International Isla Mujeres-Puerto Morelos">
+                </div>
+                <div class="footer-links">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="comidas.html">Comidas</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <p>Isla Mujeres y Puerto Morelos, Quintana Roo, México</p>
+                    <p>irmalviso@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Skål International Isla Mujeres-Puerto Morelos. Todos los derechos reservados.</p>
+                <p style="margin-top: 10px; font-size: 0.8rem;">Powered by <a href="https://lowcode.agency/" target="_blank" style="color: var(--accent-gold);">LowCode Agency</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Voting form submission to Google Sheets
+        const form = document.getElementById('votacion-form');
+        const formMessage = document.getElementById('form-message');
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzBkUBFLg3y_faTZGcoQ1qyZQIKY5hB0KLWQ6TQhrfkk4xSxfQbeZcRG5Ps2usnrNs/exec';
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Enviando...';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(form);
+            const params = new URLSearchParams(formData).toString();
+
+            fetch(`${SCRIPT_URL}?${params}`, {
+                method: 'GET',
+                mode: 'no-cors'
+            })
+            .then(() => {
+                formMessage.style.display = 'block';
+                formMessage.style.color = '#27ae60';
+                formMessage.textContent = '¡Gracias por tu voto! Tu preferencia ha sido registrada.';
+                form.reset();
+            })
+            .catch(() => {
+                formMessage.style.display = 'block';
+                formMessage.style.color = '#e74c3c';
+                formMessage.textContent = 'Hubo un error. Por favor intenta de nuevo o contáctanos directamente.';
+            })
+            .finally(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html>
