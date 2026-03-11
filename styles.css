@@ -946,6 +946,20 @@ a.event-card:hover .event-info h3 {
     margin-top: 40px;
 }
 
+.article-hero-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.image-caption {
+    font-size: 0.85rem;
+    color: #888;
+    font-style: italic;
+    margin-bottom: 25px;
+}
+
 @media (max-width: 768px) {
     .article-content h2 {
         font-size: 1.6rem;
