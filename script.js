@@ -97,5 +97,96 @@ document.addEventListener('DOMContentLoaded', () => {
         pageHeader.style.transform = 'translateY(0)';
     }
 
+    initRsvpForm();
+
     console.log('Skål International Mujeres Puerto Morelos - Website loaded');
 });
+
+const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzBkUBFLg3y_faTZGcoQ1qyZQIKY5hB0KLWQ6TQhrfkk4xSxfQbeZcRG5Ps2usnrNs/exec';
+
+function isEventPast(eventDate) {
+    const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Cancun' }).format(new Date());
+    return today > eventDate;
+}
+
+function closeRsvpForm(form) {
+    form.style.display = 'none';
+
+    const container = form.closest('.rsvp-form-container');
+    if (!container || container.querySelector('.rsvp-closed-message')) return;
+
+    const closedMessage = document.createElement('p');
+    closedMessage.className = 'rsvp-closed-message';
+    closedMessage.textContent = 'El periodo de confirmación para este evento ha finalizado.';
+    container.appendChild(closedMessage);
+}
+
+function initRsvpForm() {
+    const form = document.getElementById('rsvp-form');
+    if (!form) return;
+
+    const eventDate = form.dataset.eventDate;
+    if (eventDate && isEventPast(eventDate)) {
+        closeRsvpForm(form);
+        return;
+    }
+
+    const tipoAsistencia = document.querySelectorAll('input[name="tipo_asistencia"]');
+    const guestFields = document.getElementById('guest-fields');
+    const guestInputs = guestFields ? guestFields.querySelectorAll('input') : [];
+    const formMessage = document.getElementById('form-message');
+
+    tipoAsistencia.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.value === 'con_invitado') {
+                guestFields.classList.add('visible');
+                guestInputs.forEach(input => input.required = true);
+            } else {
+                guestFields.classList.remove('visible');
+                guestInputs.forEach(input => {
+                    input.required = false;
+                    input.value = '';
+                });
+            }
+        });
+    });
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        if (eventDate && isEventPast(eventDate)) {
+            closeRsvpForm(form);
+            return;
+        }
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Enviando...';
+        submitBtn.disabled = true;
+
+        const formData = new FormData(form);
+        const params = new URLSearchParams(formData).toString();
+
+        fetch(`${RSVP_SCRIPT_URL}?${params}`, {
+            method: 'GET',
+            mode: 'no-cors'
+        })
+        .then(() => {
+            formMessage.style.display = 'block';
+            formMessage.style.color = '#27ae60';
+            formMessage.textContent = '¡Gracias! Tu asistencia ha sido confirmada. Te enviaremos más detalles pronto.';
+            form.reset();
+            guestFields.classList.remove('visible');
+            guestInputs.forEach(input => input.required = false);
+        })
+        .catch(() => {
+            formMessage.style.display = 'block';
+            formMessage.style.color = '#e74c3c';
+            formMessage.textContent = 'Hubo un error. Por favor intenta de nuevo o contáctanos directamente.';
+        })
+        .finally(() => {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        });
+    });
+}
