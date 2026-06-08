@@ -77,7 +77,7 @@
                 </div>
                 <div class="rsvp-form-container">
                     <h3>Formulario de RSVP</h3>
-                    <form id="rsvp-form">
+                    <form id="rsvp-form" data-event-date="2026-03-20">
                         <input type="hidden" name="evento" value="3ra Comida Reglamentaria y Aniversario - Marzo 2026">
 
                         <div class="rsvp-type">
@@ -172,67 +172,5 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        // RSVP Form Logic
-        const tipoAsistencia = document.querySelectorAll('input[name="tipo_asistencia"]');
-        const guestFields = document.getElementById('guest-fields');
-        const guestInputs = guestFields.querySelectorAll('input');
-
-        tipoAsistencia.forEach(radio => {
-            radio.addEventListener('change', function() {
-                if (this.value === 'con_invitado') {
-                    guestFields.classList.add('visible');
-                    guestInputs.forEach(input => input.required = true);
-                } else {
-                    guestFields.classList.remove('visible');
-                    guestInputs.forEach(input => {
-                        input.required = false;
-                        input.value = '';
-                    });
-                }
-            });
-        });
-
-        // Form submission to Google Sheets
-        const form = document.getElementById('rsvp-form');
-        const formMessage = document.getElementById('form-message');
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzBkUBFLg3y_faTZGcoQ1qyZQIKY5hB0KLWQ6TQhrfkk4xSxfQbeZcRG5Ps2usnrNs/exec';
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const submitBtn = form.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Enviando...';
-            submitBtn.disabled = true;
-
-            const formData = new FormData(form);
-
-            // Use GET request with URL params (more reliable with Apps Script)
-            const params = new URLSearchParams(formData).toString();
-
-            fetch(`${SCRIPT_URL}?${params}`, {
-                method: 'GET',
-                mode: 'no-cors'
-            })
-            .then(() => {
-                formMessage.style.display = 'block';
-                formMessage.style.color = '#27ae60';
-                formMessage.textContent = '¡Gracias! Tu asistencia ha sido confirmada. Te enviaremos más detalles pronto.';
-                form.reset();
-                guestFields.classList.remove('visible');
-                guestInputs.forEach(input => input.required = false);
-            })
-            .catch(() => {
-                formMessage.style.display = 'block';
-                formMessage.style.color = '#e74c3c';
-                formMessage.textContent = 'Hubo un error. Por favor intenta de nuevo o contáctanos directamente.';
-            })
-            .finally(() => {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            });
-        });
-    </script>
 </body>
 </html>

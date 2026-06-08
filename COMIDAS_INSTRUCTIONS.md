@@ -91,6 +91,13 @@ Ask for:
 
 This identifies the event in Google Sheets.
 
+**Event date for RSVP auto-close (IMPORTANT):**
+```html
+<form id="rsvp-form" data-event-date="2026-06-11">
+```
+
+Use ISO format `YYYY-MM-DD`. The RSVP form automatically closes after the event day ends (midnight, America/Cancun timezone). RSVP logic is handled in `script.js` — do not add inline RSVP scripts to detail pages.
+
 ### Step 3: Update comidas.html
 
 Add a new event card in the `events-grid` section:
