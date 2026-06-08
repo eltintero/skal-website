@@ -836,6 +836,14 @@ a.event-card:hover .event-info h3 {
     display: block;
 }
 
+.rsvp-closed-message {
+    text-align: center;
+    color: #7f8c8d;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    padding: 20px 0;
+}
+
 .guest-fields h4 {
     color: var(--dark-blue);
     margin-bottom: 20px;
