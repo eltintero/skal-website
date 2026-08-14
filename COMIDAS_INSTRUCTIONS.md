@@ -255,6 +255,9 @@ Site: https://skalislamujerespuertomorelos.org/
 | `comida-abril-2026.html` | 4ta Comida Reglamentaria | Apr 17 | Comidas Mensuales |
 | `comida-mayo-2026.html` | Cena de Gala - Junta Nacional 2026 | May 30 | Comidas Mensuales |
 | `comida-junio-2026.html` | Inauguración del Mundial | Jun 11 | Eventos Especiales |
+| `comida-junio-19-2026.html` | 6ta Comida Reglamentaria | Jun 19 | Comidas Mensuales |
+| `comida-julio-2026.html` | 7ma Comida Reglamentaria | Jul 17 | Comidas Mensuales |
+| `comida-agosto-2026.html` | 8va Comida Reglamentaria | Aug 21 | Comidas Mensuales |
 
 ## Example Prompts
 
