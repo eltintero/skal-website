@@ -258,6 +258,7 @@ Site: https://skalislamujerespuertomorelos.org/
 | `comida-junio-19-2026.html` | 6ta Comida Reglamentaria | Jun 19 | Comidas Mensuales |
 | `comida-julio-2026.html` | 7ma Comida Reglamentaria | Jul 17 | Comidas Mensuales |
 | `comida-agosto-2026.html` | 8va Comida Reglamentaria | Aug 21 | Comidas Mensuales |
+| `comida-septiembre-2026.html` | 9na Comida Reglamentaria | Sep 18 | Comidas Mensuales |
 
 ## Example Prompts
 
