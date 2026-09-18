@@ -259,6 +259,7 @@ Site: https://skalislamujerespuertomorelos.org/
 | `comida-julio-2026.html` | 7ma Comida Reglamentaria | Jul 17 | Comidas Mensuales |
 | `comida-agosto-2026.html` | 8va Comida Reglamentaria | Aug 21 | Comidas Mensuales |
 | `comida-septiembre-2026.html` | 9na Comida Reglamentaria | Sep 18 | Comidas Mensuales |
+| `comida-octubre-2026.html` | Mundo Maya | Oct 30 | Eventos Especiales |
 
 ## Example Prompts
 
